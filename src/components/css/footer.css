@@ -1,0 +1,27 @@
+html,
+body {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+body > footer {
+    margin-top: auto;
+}
+
+footer{
+    width: 100%;
+    background: #180041;
+    color: #fff; 
+    display: grid;
+    place-items: center;
+    padding: 2em; 
+    font-size: 1.2rem;
+}
+
+.sticky-footer{
+    position: sticky;
+    top: 100%;
+    bottom: 0%;
+    align-items: flex-end;
+}
