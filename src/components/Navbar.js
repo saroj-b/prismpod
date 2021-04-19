@@ -83,6 +83,7 @@ export default class Navbar extends Component {
                   </div>
                 </div>
                 )} */}
+                {this.props.auth.isAuthenticated && (
                 <ul className="account-dropdown__quick-links account-dropdown__segment">
                       <li className="account-dropdown__link">
                         <a className="account-dropdown__link__anchor" href="#" onClick={this.handleLinkClick}>
@@ -90,13 +91,13 @@ export default class Navbar extends Component {
                         </a>
                       </li>
                       <li className="account-dropdown__link">
-                        <a className="account-dropdown__link__anchor" href="#" onClick={this.handleLinkClick}>
-                          Your stars
+                        <a className="account-dropdown__link__anchor" href="/forgotpassword" onClick={this.handleLinkClick}>
+                          Forgot Password
                         </a>
                       </li>
                       <li className="account-dropdown__link">
-                        <a className="account-dropdown__link__anchor" href="#" onClick={this.handleLinkClick}>
-                          Explore
+                        <a className="account-dropdown__link__anchor" href="/changepassword" onClick={this.handleLinkClick}>
+                          Change Password
                         </a>
                       </li>
                       <li className="account-dropdown__link">
@@ -105,6 +106,7 @@ export default class Navbar extends Component {
                         </a>
                       </li>
                     </ul>
+                    )}
               </div>
             </div>
           </div>
