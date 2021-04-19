@@ -68,7 +68,7 @@ export default class Navbar extends Component {
                     Log out
                   </a>
                 )}
-                {this.props.auth.isAuthenticated && (
+                {/* {this.props.auth.isAuthenticated && (
                 <div class="dropdown show">
                   <a class="btn btn-secondary dropdown-toggle" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                     Your Account <span class="caret"></span>
@@ -82,8 +82,8 @@ export default class Navbar extends Component {
                       </a>
                   </div>
                 </div>
-                )}
-                {/* <ul className="account-dropdown__quick-links account-dropdown__segment">
+                )} */}
+                <ul className="account-dropdown__quick-links account-dropdown__segment">
                       <li className="account-dropdown__link">
                         <a className="account-dropdown__link__anchor" href="#" onClick={this.handleLinkClick}>
                           Your profile
@@ -104,7 +104,7 @@ export default class Navbar extends Component {
                           Help
                         </a>
                       </li>
-                    </ul> */}
+                    </ul>
               </div>
             </div>
           </div>
