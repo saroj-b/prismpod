@@ -19,6 +19,8 @@ import ProjectSignupEp from './components/ProjectSignupEp';
 import CandidateHome from './components/CandidateHome';
 import EmployerHome from './components/EmployerHome';
 import CandidateSearch from './components/CandidateSearch';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 library.add(faEdit);
 
 class App extends Component {

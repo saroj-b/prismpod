@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Auth } from 'aws-amplify';
+import Button from 'react-bootstrap/Button';
+import {Dropdown} from 'react-bootstrap';
 
 
 export default class Navbar extends Component {
@@ -47,11 +49,11 @@ export default class Navbar extends Component {
 
           <div className="navbar-end">
             <div className="navbar-item">
-              {this.props.auth.isAuthenticated && this.props.auth.user && (
+              {/* {this.props.auth.isAuthenticated && this.props.auth.user && (
                 <p>
                   Hello {this.props.auth.user.username}
                 </p>
-              )}
+              )} */}
               <div className="buttons">
                 {!this.props.auth.isAuthenticated && (
                   <div>
@@ -63,50 +65,29 @@ export default class Navbar extends Component {
                     </a>
                   </div>
                 )}
-                {this.props.auth.isAuthenticated && (
+                {/* {this.props.auth.isAuthenticated && (
                   <a href="/" onClick={this.handleLogOut} className="button is-danger">
                     Log out
                   </a>
-                )}
-                {/* {this.props.auth.isAuthenticated && (
-                <div class="dropdown show">
-                  <a class="btn btn-secondary dropdown-toggle" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                    Your Account <span class="caret"></span>
-                  </a>
-
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                      <a href="/changepassword" className="button is-light">
-                        Change Password
-                      </a>
-                  </div>
-                </div>
                 )} */}
-                {this.props.auth.isAuthenticated && (
-                <ul className="account-dropdown__quick-links account-dropdown__segment">
-                      <li className="account-dropdown__link">
-                        <a className="account-dropdown__link__anchor" href="#" onClick={this.handleLinkClick}>
-                          Your profile
-                        </a>
-                      </li>
-                      <li className="account-dropdown__link">
-                        <a className="account-dropdown__link__anchor" href="/forgotpassword" onClick={this.handleLinkClick}>
-                          Forgot Password
-                        </a>
-                      </li>
-                      <li className="account-dropdown__link">
-                        <a className="account-dropdown__link__anchor" href="/changepassword" onClick={this.handleLinkClick}>
-                          Change Password
-                        </a>
-                      </li>
-                      <li className="account-dropdown__link">
-                        <a className="account-dropdown__link__anchor" href="#" onClick={this.handleLinkClick}>
-                          Help
-                        </a>
-                      </li>
-                    </ul>
-                    )}
+               
+                {this.props.auth.isAuthenticated && (  
+                <Dropdown>
+                  <Dropdown.Toggle variant="Secondary" id="dropdown-basic">
+                  {this.props.auth.isAuthenticated && this.props.auth.user && (
+                    <strong>
+                    Hi {this.props.auth.user.username}, Access your account
+                    </strong>
+                    )} 
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    <Dropdown.Item href="/forgotpassword">Forgot Password</Dropdown.Item>
+                    <Dropdown.Item href="/changepassword">Change Password</Dropdown.Item>
+                    <Dropdown.Item onClick={this.handleLogOut} href="/" className="button is-danger">Log Out</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+                )}  
               </div>
             </div>
           </div>
