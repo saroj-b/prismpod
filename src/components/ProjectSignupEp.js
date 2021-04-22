@@ -4,8 +4,6 @@ import './css/projectsignup.css';
 import Head from './Head';
 import { frontend,backend,mobiletech } from './Multi1';
 
-
-
 const sports = 
 [ "React js", "Angular", "Php",];
 class Form extends Component {
@@ -16,15 +14,15 @@ class Form extends Component {
     render() {         
         return (
             <div>
- <Head/>
- <br/>
- <br/>
- <br/>
- <br/>
+            <Head/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
                 <form onSubmit={this.handleSubmit}>
                    
                     <h1></h1>
-                    
+
                     <input type="text" 
                     className="itext"
                      placeholder="Urser name" /><br />
@@ -35,11 +33,9 @@ class Form extends Component {
                     
                         <MultiSelect
                  style={{ width: '30%' ,
-                //  label="Foods",
                                            
                 
                  }}
-                //  font-family: Arial, Helvetica, sans-serif;}}
                
                  data={frontend}
                        
@@ -49,11 +45,9 @@ class Form extends Component {
                     <label></label>
                     <MultiSelect
                  style={{ width: '30%' ,
-                //  label="Foods",
                                            
                 
                  }}
-                //  font-family: Arial, Helvetica, sans-serif;}}
                
                  data={backend}
                        
@@ -62,11 +56,9 @@ class Form extends Component {
                     <label></label>
                     <MultiSelect
                  style={{ width: '30%' ,
-                //  label="Foods",
                                            
                 
                  }}
-                //  font-family: Arial, Helvetica, sans-serif;}}
                
                  data={mobiletech}
                     />

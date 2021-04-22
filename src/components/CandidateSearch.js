@@ -1,58 +1,26 @@
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 import './css/addcandidate.css';
 import Head from './Head';
+import Datatable from './datatable';
+require("es6-promise").polyfill();
+require("isomorphic-fetch");
 
+export default function Candidatesearch() {
+  const [data, setData] = useState([]);
+  const [q, setQ] = useState("");
 
-class AddCandidate extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      firstName: null,
-      lastName: null,
-      email: null,
-      password: null, 
-      
-      formErrors: {
-        firstName: "",
-        lastName: "",
-        email: "",
-        password: ""
-      }
-    };
-  }
-
-  render() {
-    const { formErrors } = this.state;
-
-    return (
-        <>
-        {/* <Head/> */}
-      <div className="wrapper1">
-        <div className="form-wrapper">
-          <form>
-            <div className="email">
-              <input
-                className={formErrors.firstName.length > 0 ? "error" : null}
-                placeholder="Enter Skill"
-                className="oo1"
-                type="text"
-                name="skill"
-                noValidate
-                onChange={this.handleChange}
-              />
-            </div>
-            
-            <div className="createAccount">
-              <button type="submit">Search Candidate</button>
-              <a href="/employerhome">Back to Home</a>
-            </div>
-          </form>
-        </div>
+  useEffect(() => {
+    fetch("https://xvc2hr1788.execute-api.us-east-1.amazonaws.com/dev/Get_Candidate")
+    .then((response) => response.json())
+    .then((json) => setData(json))
+  }, [])
+  
+  return(
+    <div>
+      <div>filter goes here</div>
+      <div>
+        <Datatable data={data} />
       </div>
-      </>
-    );
-  }
+    </div>
+  );
 }
-
-export default AddCandidate;
