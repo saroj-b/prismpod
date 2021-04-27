@@ -36,13 +36,13 @@ export default class Navbar extends Component {
             
             {this.props.auth.isAuthenticated && (
               <a href="/candidatehome" className="navbar-item">
-                Candidate Home
+                Candidate
               </a>
             )} 
 
             {this.props.auth.isAuthenticated && (
               <a href="/employerhome" className="navbar-item">
-                Employer Home
+                Employer
               </a>
             )}
           </div>
@@ -76,13 +76,14 @@ export default class Navbar extends Component {
                   <Dropdown.Toggle variant="Secondary" id="dropdown-basic">
                   {this.props.auth.isAuthenticated && this.props.auth.user && (
                     <strong>
-                    Hi {this.props.auth.user.username}, Access your account
+                    Hi {this.props.auth.user.username}
                     </strong>
                     )} 
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu>
-                    <Dropdown.Item href="#">My Details</Dropdown.Item>
+                    <Dropdown.Item href="#">My Account</Dropdown.Item>
+                    <Dropdown.Item href="#">More</Dropdown.Item>
                     <Dropdown.Item href="/changepassword">Change Password</Dropdown.Item>
                     <Dropdown.Item onClick={this.handleLogOut} href="/" className="button is-danger">Log Out</Dropdown.Item>
                   </Dropdown.Menu>
