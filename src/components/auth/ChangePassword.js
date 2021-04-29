@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import FormErrors from "../FormErrors";
 import Validate from "../utility/FormValidation";
 import { Auth } from 'aws-amplify';
+import '../css/register.css';
 
 class ChangePassword extends Component {
   state = {
@@ -67,7 +68,7 @@ class ChangePassword extends Component {
   render() {
     return (
       <section className="section auth">
-        <div className="container">
+        <div className="container parent">
           <h1>Change Password</h1>
           <FormErrors formerrors={this.state.errors} />
 
@@ -106,11 +107,6 @@ class ChangePassword extends Component {
                   value={this.state.confirmpassword}
                   onChange={this.onInputChange}
                 />
-              </p>
-            </div>
-            <div className="field">
-              <p className="control">
-                <a href="/forgotpassword">Forgot password?</a>
               </p>
             </div>
             <div className="field">

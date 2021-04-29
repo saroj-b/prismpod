@@ -20,7 +20,7 @@ class SearchPage extends React.Component {
         Search
       </MDBBtn>
     </form>
-  </MDBCol> 
+  </MDBCol>
   }
 }
 
