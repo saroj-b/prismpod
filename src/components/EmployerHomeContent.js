@@ -9,7 +9,7 @@ export default function EmployerHomeContent() {
                     <div className="card-content">
                         <div className="content">
                             <h4>Add Requirements</h4>
-                            <a class="button is-primary is-medium" href="#">Coming Soon</a>
+                            <a class="button is-primary is-medium" href="/employeeprojectreq">Post New Requirement</a>
                         </div>
                     </div>
                 </div>

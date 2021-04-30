@@ -46,6 +46,26 @@ function validateForm(event, state) {
       document.getElementById("newpassword").classList.add("is-danger");
       return { blankfield: true };
     }
+    if (state.hasOwnProperty("projectObjective") && state.projectObjective === "") {
+      document.getElementById("projectObjective").classList.add("is-danger");
+      return { blankfield: true };
+    }
+    if (state.hasOwnProperty("frontendTechSkills") && state.frontendTechSkills === "") {
+      document.getElementById("frontendTechSkills").classList.add("is-danger");
+      return { blankfield: true };
+    }
+    if (state.hasOwnProperty("backendTechSkills") && state.backendTechSkills === "") {
+      document.getElementById("backendTechSkills").classList.add("is-danger");
+      return { blankfield: true };
+    }
+    if (state.hasOwnProperty("mobileTechSkills") && state.mobileTechSkills === "") {
+      document.getElementById("mobileTechSkills").classList.add("is-danger");
+      return { blankfield: true };
+    }
+    if (state.hasOwnProperty("remoteEngineerModelPreference") && state.remoteEngineerModelPreference === "") {
+      document.getElementById("remoteEngineerModelPreference").classList.add("is-danger");
+      return { blankfield: true };
+    }
     if (state.hasOwnProperty("confirmpassword") && state.confirmpassword === "") {
       document.getElementById("confirmpassword").classList.add("is-danger");
       return { blankfield: true };
