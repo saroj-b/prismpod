@@ -39,6 +39,7 @@ class ForgotPassword extends Component {
       this.props.history.push('/forgotpasswordverification');
     }catch(error) {
       console.log(error);
+      window.alert(error);
     }
   }
 

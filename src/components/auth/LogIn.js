@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import FormErrors from "../FormErrors";
 import Validate from "../utility/FormValidation";
+import IconButton from "@material-ui/core/IconButton";
+import InputLabel from "@material-ui/core/InputLabel";
+import Visibility from "@material-ui/icons/Visibility";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import Input from "@material-ui/core/Input";
 import { Auth } from "aws-amplify";
 
 class LogIn extends Component {
@@ -34,7 +40,6 @@ class LogIn extends Component {
       });
     }
 
-    //
     // AWS Cognito integration here
     try {
       const user = await Auth.signIn(this.state.username, this.state.password);
@@ -82,6 +87,7 @@ class LogIn extends Component {
                 />
               </p>
             </div>
+
             <div className="field">
               <p className="control">
                 <input 
@@ -94,6 +100,7 @@ class LogIn extends Component {
                 />
               </p>
             </div>
+            
             <div className="field">
               <p className="control">
                 <a href="/forgotpassword">Forgot password?</a>

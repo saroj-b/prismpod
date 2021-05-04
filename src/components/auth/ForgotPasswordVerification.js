@@ -42,7 +42,8 @@ class ForgotPasswordVerification extends Component {
         this.state.verificationcode,
         this.state.newpassword
       );
-      this.props.history.push("/changepasswordconfirmation");
+      window.alert("Password has been reset successfully. Please login");
+      this.props.history.push("/login");
     }catch(error) {
       console.log(error);
     }

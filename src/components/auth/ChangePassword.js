@@ -47,7 +47,8 @@ class ChangePassword extends Component {
         this.state.oldpassword,
         this.state.newpassword
       );
-      this.props.history.push("/changepasswordconfirmation");
+      window.alert("Password changed successfully.");
+      this.props.history.push("/");
     } catch (error) {
       let err = null;
       !error.message ? err = { "message": error } : err = error;
@@ -55,6 +56,7 @@ class ChangePassword extends Component {
         errors: { ...this.state.errors, cognito: err }
       });
       console.log(err);
+      window.alert(err);
     }
   }
 
