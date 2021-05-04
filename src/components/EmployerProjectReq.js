@@ -3,7 +3,6 @@ import FormErrors from "./FormErrors";
 import Validate from "./utility/FormValidation";
 import { Auth } from "aws-amplify";
 import axios from 'axios';
-import { Multiselect } from "multiselect-react-dropdown";
 import './css/register.css';
 
 class Register extends Component {
@@ -63,7 +62,6 @@ class Register extends Component {
     document.getElementById(event.target.id).classList.remove("is-danger");
   }
 
-  plainArray = ["Option 1", "Option 2", "Option 3", "Option 4", "Option 5"];
 
   render() {
     return (
@@ -73,9 +71,8 @@ class Register extends Component {
           <FormErrors formerrors={this.state.errors} />
           <form onSubmit={this.handleSubmit}>
           
-          {/* <Multiselect options={plainArray} isObject={false} /> */}
             
-            {/* <div className="field">
+            <div className="field">
                 <p className="control">
                   <input 
                     className="input" 
@@ -87,7 +84,7 @@ class Register extends Component {
                     onChange={this.onInputChange}
                   />
                 </p>
-              </div> */}
+              </div>
 
               <div className="field">
                 <p className="control">

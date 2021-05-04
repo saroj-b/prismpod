@@ -7,8 +7,9 @@ import Validate from "./utility/FormValidation";
 import FormErrors from "./FormErrors";
 class AddCandidate extends Component {
   state = {
-   fname: "",
+  fname: "",
   email: "",
+  area: "",
   oexpertise: "",
   portfolio: "",
   resetForm: "",
@@ -35,11 +36,11 @@ class AddCandidate extends Component {
         errors: { ...this.state.errors, ...error }
       });
     }
-    const { fname,email,oexpertise, portfolio  } = this.state;
+    const { fname,email,oexpertise, area, portfolio  } = this.state;
     // Database insert here
-    if (fname && email && oexpertise && portfolio) {
+    if (fname && email && area && oexpertise && portfolio) {
       axios.post("https://qk46jtsdt7.execute-api.us-east-1.amazonaws.com/dev/add_Candidate_DynamoDB  ",
-       {CandidateFullName:fname,CandidateEmail: email,
+       {CandidateFullName:fname,CandidateEmail: email, CandidateAreaOfExpertise : area,
         CandidateOtherExpertise: oexpertise,CandidatePortfolio:portfolio }).then(res => {
           console.log(res);
           console.log(res.data);
@@ -56,7 +57,6 @@ class AddCandidate extends Component {
     });
     document.getElementById(event.target.id).classList.remove("is-danger");
   }
-  plainArray = ["Option 1", "Option 2", "Option 3", "Option 4", "Option 5"];
 render() {
     return (
      <div className="wrapper1">
@@ -65,7 +65,7 @@ render() {
           <form onSubmit={this.handleSubmit}>
             <div className="email">
               <input
-                placeholder="First Name"
+                placeholder="Full Name"
                 id="fname"
                 className="oo1"
                 type="text"
@@ -77,7 +77,7 @@ render() {
             <div className="email">
               <input
                 className="input1"
-                placeholder="Email"
+                placeholder="Enter Email"
                 type="email"
                   value={this.state.email}
                     onChange={this.onInputChange}
@@ -85,18 +85,16 @@ render() {
               />
             </div>
 
-            {/* <div className="password">
-              <Select
-              isMulti
-              // options={Country}
+            <div className="email">
+              <input
                 className="input1"
-                placeholder="Area"
+                placeholder="Area of Expertise"
                 type="text"
-               value={this.state.area}
+                  value={this.state.area}
                     onChange={this.onInputChange}
                     id="area"
-              />   
-            </div> */}
+              />
+            </div>
 
             <div className="password">
               <input             
