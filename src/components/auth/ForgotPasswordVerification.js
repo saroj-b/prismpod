@@ -59,7 +59,7 @@ class ForgotPasswordVerification extends Component {
   render() {
     return (
       <section className="section auth">
-        <div className="container">
+        <div className="container parent">
           <h1>Set new password</h1>
           <p>
             Please enter the verification code sent to your email address below,

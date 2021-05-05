@@ -1,29 +1,89 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import FormErrors from "./FormErrors";
 import Validate from "./utility/FormValidation";
 import { Auth } from "aws-amplify";
 import axios from 'axios';
+import { Multiselect } from "multiselect-react-dropdown";
 import './css/register.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Dropdown} from 'react-bootstrap';
+import Select from 'react-select';
+
+
+const remoteEngineerPreference = [
+  { value: 'USA', label: 'US-Based' },
+  { value: 'Canada', label: 'Canada-Based' },
+  { value: 'LatinAmerica', label: 'Nearshore- Latin America' },
+  { value: 'India', label: 'Offshore- India' }
+];
+
+const budget = [
+  { value: '10000', label: '< $10,000' },
+  { value: '25000', label: '$10000 - $25000' },
+  { value: '50000', label: '$25000 - $50000' },
+  { value: '50000+', label: '> $50000' }
+];
+
+const frontEndSkills = [
+  { value: 'React', label: 'React' },
+  { value: 'Angular', label: 'Angular' },
+  { value: 'Vue', label: 'Vue' },
+  { value: 'HTML5', label: 'HTML5' },
+  { value: 'Bootstrap', label: 'Bootstrap' },
+  { value: 'CSS', label: 'CSS' }
+];
+
+const backEndSkills = [
+  { value: 'Node', label: 'Node' },
+  { value: 'Java', label: 'Java' },
+  { value: 'Python', label: 'Python' },
+  { value: 'C++', label: 'C++' },
+  { value: 'C', label: 'C' },
+  { value: 'AWS', label: 'AWS' }
+];
+
+
 
 class Register extends Component {
   
   state = {
     projectObjective: "",
-    frontendTechSkills: "",
-    backendTechSkills: "",
+    frontendTechSkills: null,
+    backendTechSkills: null,
     mobileTechSkills: "",
-    remoteEngineerModelPreference: "",
+    remoteEngPref: null,
+    budgetRange: null,
     errors: {
-      blankfield: false,
-      passwordmatch: false
+      blankfield: false
     }
   }
 
+  //for select option
+  handleChange = remoteEngPref => {
+    this.setState({ remoteEngPref });
+    console.log(`Option selected:`, remoteEngPref.value);
+  };
+
+  handleChange = budgetRange => {
+    this.setState({ budgetRange });
+    console.log(`Option selected:`, budgetRange.value);
+  };
+
+  handleChange = frontendTechSkills => {
+    this.setState({ frontendTechSkills });
+    console.log(`Option selected:`, frontendTechSkills.value);
+  };
+
+  handleChange = backendTechSkills => {
+    this.setState({ backendTechSkills });
+    console.log(`Option selected:`, backendTechSkills.value);
+  };
+
+  //for clear error
   clearErrorState = () => {
     this.setState({
       errors: {
-        blankfield: false,
-        passwordmatch: false
+        blankfield: false
       }
     });
   }
@@ -40,11 +100,11 @@ class Register extends Component {
       });
     }
 
-    const { projectObjective, frontendTechSkills, backendTechSkills, mobileTechSkills, remoteEngineerModelPreference  } = this.state;
+    const { projectObjective, frontendTechSkills, backendTechSkills, mobileTechSkills, remoteEngPref, budgetRange  } = this.state;
 
     // Database insert here
-    if (projectObjective && frontendTechSkills && backendTechSkills && mobileTechSkills && remoteEngineerModelPreference) {
-      axios.post('https://lt8n4qcae3.execute-api.us-east-1.amazonaws.com/dev/employerProjectRequirements', {ProjectObjective: projectObjective, BackendSkills: backendTechSkills, FrontendSkills:frontendTechSkills, MobileTechSkills: mobileTechSkills, RemoteEngPrefernce:remoteEngineerModelPreference }).then(res => {
+    if (projectObjective  && remoteEngPref) {
+      axios.post('https://lt8n4qcae3.execute-api.us-east-1.amazonaws.com/dev/employerProjectRequirements', {ProjectObjective: projectObjective, BackendSkills: backendTechSkills, FrontendSkills:frontendTechSkills, MobileTechSkills: mobileTechSkills, RemoteEngPrefernce: remoteEngPref.value, ProjectBudgetRange: budgetRange }).then(res => {
           console.log(res);
           console.log(res.data);
           window.alert("New Requirement added successfully");
@@ -62,33 +122,91 @@ class Register extends Component {
     document.getElementById(event.target.id).classList.remove("is-danger");
   }
 
-
   render() {
+
+    const { selectedOption } = this.state;
+    const { budgetRange } = this.state;
+    const { frontendTechSkills } = this.state;
+    const { backendTechSkills } = this.state;
+
     return (
       <section className="section auth">
-        <div className="container parent">
+        <div className=" parent">
           <h1>Add a Requirement</h1>
           <FormErrors formerrors={this.state.errors} />
           <form onSubmit={this.handleSubmit}>
-          
-            
-            <div className="field">
+
+              <div className="field">
                 <p className="control">
-                  <input 
-                    className="input" 
-                    type="text"
-                    id="projectObjective"
-                    aria-describedby="projectObjectiveHelp"
-                    placeholder="Project Objective"
-                    value={this.state.projectObjective}
-                    onChange={this.onInputChange}
+                  <textarea
+                  className="input" 
+                  id="projectObjective"
+                  placeholder="Project Objective"
+                  value={this.state.projectObjective}
+                  onChange={this.onInputChange}
+                  />
+                </p>
+              </div>
+
+
+              {/* Multiselect Dropdown Starts Here */}
+
+              <div className="field">
+                <p className="control">
+                <Select
+                  value={frontendTechSkills}
+                  onChange={this.handleChange}
+                  options={frontEndSkills}
+                  id="frontEndSkills"
+                  placeholder="Front-end Skills"
+                  isMulti="true"
                   />
                 </p>
               </div>
 
               <div className="field">
                 <p className="control">
-                  <input 
+                <Select
+                  value={backendTechSkills}
+                  onChange={this.handleChange}
+                  options={backEndSkills}
+                  id="backEndSkills"
+                  placeholder="Back-end Skills"
+                  isMulti="true"
+                  />
+                </p>
+              </div>
+
+              {/* Select option starts here */}
+
+              <div className="field">
+                <p className="control">
+                <Select
+                  value={selectedOption}
+                  onChange={this.handleChange}
+                  options={remoteEngineerPreference}
+                  id="remoteEngModel"
+                  placeholder="Remote Eng Pref"
+                  />
+                </p>
+              </div>
+
+              <div className="field">
+                <p className="control">
+                <Select
+                  value={budgetRange}
+                  onChange={this.handleChange}
+                  options={budget}
+                  id="budgetRange"
+                  placeholder="Budget Range"
+                  />
+                </p>
+              </div>
+              
+
+              {/* <div className="field">
+                <p className="control">
+                  <input
                     className="input" 
                     type="text"
                     id="frontendTechSkills"
@@ -140,7 +258,7 @@ class Register extends Component {
                     onChange={this.onInputChange}
                   />
                 </p>
-              </div>
+              </div> */}
 
               <div className="field">
                 <p className="control">

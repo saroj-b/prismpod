@@ -5,10 +5,12 @@ import axios from 'axios';
 // import FormikControl from './formikcontrol';
 import Validate from "./utility/FormValidation";
 import FormErrors from "./FormErrors";
+
+
 class AddCandidate extends Component {
   state = {
   fname: "",
-  email: "",
+  candidateemail: "",
   area: "",
   oexpertise: "",
   portfolio: "",
@@ -36,15 +38,15 @@ class AddCandidate extends Component {
         errors: { ...this.state.errors, ...error }
       });
     }
-    const { fname,email,oexpertise, area, portfolio  } = this.state;
+    const { fname,candidateemail,oexpertise, area, portfolio  } = this.state;
     // Database insert here
-    if (fname && email && area && oexpertise && portfolio) {
+    if (fname && candidateemail && area && oexpertise && portfolio) {
       axios.post("https://qk46jtsdt7.execute-api.us-east-1.amazonaws.com/dev/add_Candidate_DynamoDB  ",
-       {CandidateFullName:fname,CandidateEmail: email, CandidateAreaOfExpertise : area,
+       {CandidateFullName:fname,CandidateEmail: candidateemail, CandidateAreaOfExpertise : area,
         CandidateOtherExpertise: oexpertise,CandidatePortfolio:portfolio }).then(res => {
           console.log(res);
           console.log(res.data);
-          window.alert("New Requirement added successfully");
+          window.alert("New candidate details added successfully");
           window.location.reload();
       }, (error) => {
           console.log(error);
@@ -63,58 +65,63 @@ render() {
         <div className="form-wrapper">
           <FormErrors formerrors={this.state.errors} />
           <form onSubmit={this.handleSubmit}>
+
+            {/* For Name */}
             <div className="email">
               <input
-                placeholder="Full Name"
-                id="fname"
-                className="oo1"
+                className="input" 
+                placeholder="Enter Fullname"
                 type="text"
+                id="fname"
                 value={this.state.fname}
-                    onChange={this.onInputChange}
+                onChange={this.onInputChange}
               />
             </div>
 
+            {/* For Email */}
             <div className="email">
               <input
-                className="input1"
+                className="input"
                 placeholder="Enter Email"
                 type="email"
-                  value={this.state.email}
-                    onChange={this.onInputChange}
-                    id="email"
+                value={this.state.candidateemail}
+                onChange={this.onInputChange}
+                id="candidateemail"
               />
             </div>
 
+            {/* For area */}
             <div className="email">
               <input
-                className="input1"
+                className="input"
                 placeholder="Area of Expertise"
                 type="text"
-                  value={this.state.area}
-                    onChange={this.onInputChange}
-                    id="area"
+                value={this.state.area}
+                onChange={this.onInputChange}
+                id="area"
               />
             </div>
 
+            {/* Expertise */}
             <div className="password">
               <input             
-                className="input1"
+                className="input"
                 placeholder="Any other expertise you would like to list?"
                 type="text"
-               value={this.state.oexpertise}
-                    onChange={this.onInputChange}
-                    id="oexpertise"
+                value={this.state.oexpertise}
+                onChange={this.onInputChange}
+                id="oexpertise"
               />
             </div>
 
             <div className="password">
               <input
-                className="input1"
+                className="input"
                 placeholder="portfolio of your prior work ?"
                 type="text"
                 value={this.state.portfolio}
-                    onChange={this.onInputChange}
-                    id="portfolio"
+                onChange={this.onInputChange}
+                id="portfolio"
               />
             </div>
 

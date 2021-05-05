@@ -7,6 +7,7 @@ function validateForm(event, state) {
       }
     }
   
+    //Registation Page and Login Page
     if (state.hasOwnProperty("username") && state.username === "") {
       document.getElementById("username").classList.add("is-danger");
       return { blankfield: true };
@@ -46,26 +47,6 @@ function validateForm(event, state) {
       document.getElementById("newpassword").classList.add("is-danger");
       return { blankfield: true };
     }
-    if (state.hasOwnProperty("projectObjective") && state.projectObjective === "") {
-      document.getElementById("projectObjective").classList.add("is-danger");
-      return { blankfield: true };
-    }
-    if (state.hasOwnProperty("frontendTechSkills") && state.frontendTechSkills === "") {
-      document.getElementById("frontendTechSkills").classList.add("is-danger");
-      return { blankfield: true };
-    }
-    if (state.hasOwnProperty("backendTechSkills") && state.backendTechSkills === "") {
-      document.getElementById("backendTechSkills").classList.add("is-danger");
-      return { blankfield: true };
-    }
-    if (state.hasOwnProperty("mobileTechSkills") && state.mobileTechSkills === "") {
-      document.getElementById("mobileTechSkills").classList.add("is-danger");
-      return { blankfield: true };
-    }
-    if (state.hasOwnProperty("remoteEngineerModelPreference") && state.remoteEngineerModelPreference === "") {
-      document.getElementById("remoteEngineerModelPreference").classList.add("is-danger");
-      return { blankfield: true };
-    }
     if (state.hasOwnProperty("confirmpassword") && state.confirmpassword === "") {
       document.getElementById("confirmpassword").classList.add("is-danger");
       return { blankfield: true };
@@ -89,9 +70,41 @@ function validateForm(event, state) {
       return { passwordmatch: true };
     }
 
+    //Employee Project Req
+    if (state.hasOwnProperty("projectObjective") && state.projectObjective === "") {
+      document.getElementById("projectObjective").classList.add("is-danger");
+      return { blankfield: true };
+    }
+    if (state.hasOwnProperty("selectedOption") && state.selectedOption === "") {
+      document.getElementById("remoteEngModel").classList.add("is-danger");
+      return { blankfield: true };
+    }
+    // if (state.hasOwnProperty("frontendTechSkills") && state.frontendTechSkills === "") {
+    //   document.getElementById("frontendTechSkills").classList.add("is-danger");
+    //   return { blankfield: true };
+    // }
+    // if (state.hasOwnProperty("backendTechSkills") && state.backendTechSkills === "") {
+    //   document.getElementById("backendTechSkills").classList.add("is-danger");
+    //   return { blankfield: true };
+    // }
+    // if (state.hasOwnProperty("mobileTechSkills") && state.mobileTechSkills === "") {
+    //   document.getElementById("mobileTechSkills").classList.add("is-danger");
+    //   return { blankfield: true };
+    // }
+    // if (state.hasOwnProperty("remoteEngineerModelPreference") && state.remoteEngineerModelPreference === "") {
+    //   document.getElementById("remoteEngineerModelPreference").classList.add("is-danger");
+    //   return { blankfield: true };
+    // }
+
+    
+
     //add candidate
     if (state.hasOwnProperty("fname") && state.fname === "") {
       document.getElementById("fname").classList.add("is-danger");
+      return { blankfield: true };
+    }
+    if (state.hasOwnProperty("candidateemail") && state.candidateemail === "") {
+      document.getElementById("candidateemail").classList.add("is-danger");
       return { blankfield: true };
     }
     if (state.hasOwnProperty("area") && state.area === "") {

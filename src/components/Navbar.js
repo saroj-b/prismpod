@@ -83,7 +83,6 @@ export default class Navbar extends Component {
 
                   <Dropdown.Menu>
                     <Dropdown.Item href="#">My Account</Dropdown.Item>
-                    <Dropdown.Item href="#">More</Dropdown.Item>
                     <Dropdown.Item href="/changepassword">Change Password</Dropdown.Item>
                     <Dropdown.Item onClick={this.handleLogOut} href="/" className="button is-danger">Log Out</Dropdown.Item>
                   </Dropdown.Menu>

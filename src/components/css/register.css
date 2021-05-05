@@ -1,6 +1,6 @@
 .parent {
-    display: grid;
+    display:grid;
     place-items: center;
-    text-align: center;
+    background-color: #c3c1c1;
     
   }
