@@ -9,7 +9,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Dropdown} from 'react-bootstrap';
 import Select from 'react-select';
 
-
 const remoteEngineerPreference = [
   { value: 'USA', label: 'US-Based' },
   { value: 'Canada', label: 'Canada-Based' },
@@ -42,6 +41,12 @@ const backEndSkills = [
   { value: 'AWS', label: 'AWS' }
 ];
 
+const mobileSkills = [
+  { value: 'Kotlin', label: 'Kotlin' },
+  { value: 'Java', label: 'Java' },
+  { value: 'Python', label: 'Python' },
+  { value: 'C#', label: 'C#' }
+]
 
 
 class Register extends Component {
@@ -50,7 +55,7 @@ class Register extends Component {
     projectObjective: "",
     frontendTechSkills: null,
     backendTechSkills: null,
-    mobileTechSkills: "",
+    mobileTechSkills: null,
     remoteEngPref: null,
     budgetRange: null,
     errors: {
@@ -77,6 +82,11 @@ class Register extends Component {
   handleChange = backendTechSkills => {
     this.setState({ backendTechSkills });
     console.log(`Option selected:`, backendTechSkills.value);
+  };
+
+  handleChange = mobileTechSkills => {
+    this.setState({ mobileTechSkills });
+    console.log(`Option selected:`, mobileTechSkills.value);
   };
 
   //for clear error
@@ -124,14 +134,15 @@ class Register extends Component {
 
   render() {
 
-    const { selectedOption } = this.state;
+    const { remoteEngPref } = this.state;
     const { budgetRange } = this.state;
     const { frontendTechSkills } = this.state;
     const { backendTechSkills } = this.state;
+    const { mobileTechSkills } = this.state;
 
     return (
       <section className="section auth">
-        <div className=" parent">
+        <div className="container parent">
           <h1>Add a Requirement</h1>
           <FormErrors formerrors={this.state.errors} />
           <form onSubmit={this.handleSubmit}>
@@ -177,12 +188,26 @@ class Register extends Component {
                 </p>
               </div>
 
+              
+              <div className="field">
+                <p className="control">
+                <Select
+                  value={mobileTechSkills}
+                  onChange={this.handleChange}
+                  options={mobileSkills}
+                  id="mobileSkills"
+                  placeholder="Mobile Skills"
+                  isMulti="true"
+                  />
+                </p>
+              </div>
+
               {/* Select option starts here */}
 
               <div className="field">
                 <p className="control">
                 <Select
-                  value={selectedOption}
+                  value={remoteEngPref}
                   onChange={this.handleChange}
                   options={remoteEngineerPreference}
                   id="remoteEngModel"
@@ -202,7 +227,6 @@ class Register extends Component {
                   />
                 </p>
               </div>
-              
 
               {/* <div className="field">
                 <p className="control">

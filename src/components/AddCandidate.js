@@ -2,24 +2,37 @@ import React ,{Component}from "react";
 import '../components/css/addcandidate.css';
 import Head from "./Head";
 import axios from 'axios';
-// import FormikControl from './formikcontrol';
 import Validate from "./utility/FormValidation";
 import FormErrors from "./FormErrors";
+import Select from 'react-select';
+import './css/addcandidate.css';
 
+const areaOfExpertise = [
+  { value: 'Java', label: 'Java'},
+  { value: 'Javascript', label: 'Javascript'},
+  { value: 'Python', label: 'Python'},
+  { value: 'C++', label: 'C++'}
+]
 
 class AddCandidate extends Component {
   state = {
-  fname: "",
-  candidateemail: "",
-  area: "",
-  oexpertise: "",
-  portfolio: "",
-  resetForm: "",
-    errors: {
-      blankfield: false,
-      passwordmatch: false
-    }
-  }
+    fname: "",
+    candidateemail: "",
+    area: null,
+    oexpertise: "",
+    portfolio: "",
+    resetForm: "",
+      errors: {
+        blankfield: false,
+        passwordmatch: false
+      }
+  };
+
+  handleChange = area => {
+    this.setState({ area });
+    console.log(`Option selected:`, area.value);
+  };
+
   clearErrorState = () => {
     this.setState({
       errors: {
@@ -28,6 +41,7 @@ class AddCandidate extends Component {
       }
     });
   }
+  
   handleSubmit = async event => {
     event.preventDefault();
     // Form validation
@@ -38,11 +52,13 @@ class AddCandidate extends Component {
         errors: { ...this.state.errors, ...error }
       });
     }
+
     const { fname,candidateemail,oexpertise, area, portfolio  } = this.state;
+
     // Database insert here
     if (fname && candidateemail && area && oexpertise && portfolio) {
       axios.post("https://qk46jtsdt7.execute-api.us-east-1.amazonaws.com/dev/add_Candidate_DynamoDB  ",
-       {CandidateFullName:fname,CandidateEmail: candidateemail, CandidateAreaOfExpertise : area,
+       {CandidateFullName:fname,CandidateEmail: candidateemail, CandidateAreaOfExpertise : area.value,
         CandidateOtherExpertise: oexpertise,CandidatePortfolio:portfolio }).then(res => {
           console.log(res);
           console.log(res.data);
@@ -53,85 +69,86 @@ class AddCandidate extends Component {
       });
   }
   };
+
   onInputChange = event => {
     this.setState({
       [event.target.id]: event.target.value
     });
     document.getElementById(event.target.id).classList.remove("is-danger");
   }
+
 render() {
+
+  const {area} = this.state;
+
     return (
-     <div className="wrapper1">
-        <div className="form-wrapper">
-          <FormErrors formerrors={this.state.errors} />
-          <form onSubmit={this.handleSubmit}>
-
-            {/* For Name */}
-            <div className="email">
-              <input
-                className="input" 
-                placeholder="Enter Fullname"
-                type="text"
-                id="fname"
-                value={this.state.fname}
-                onChange={this.onInputChange}
-              />
+      <section section auth>
+        <div className="container parent">
+            <div className="form-wrapper">
+              <FormErrors formerrors={this.state.errors} />
+              <form onSubmit={this.handleSubmit}>
+                {/* For Name */}
+                <div className="email">
+                  <input
+                    className="input" 
+                    placeholder="Enter Fullname"
+                    type="text"
+                    id="fname"
+                    value={this.state.fname}
+                    onChange={this.onInputChange}
+                  />
+                </div>
+                {/* For Email */}
+                <div className="email">
+                  <input
+                    className="input"
+                    placeholder="Enter Email"
+                    type="email"
+                    value={this.state.candidateemail}
+                    onChange={this.onInputChange}
+                    id="candidateemail"
+                  />
+                </div>
+                {/* For area */}
+                <div className="email">
+                <Select
+                      value={area}
+                      onChange={this.handleChange}
+                      options={areaOfExpertise}
+                      id="area"
+                      placeholder="Area"
+                      isMulti="true"
+                    />
+                </div>
+                {/* Expertise */}
+                <div className="password">
+                  <input             
+                    className="input"
+                    placeholder="Any other expertise you would like to list?"
+                    type="text"
+                    value={this.state.oexpertise}
+                    onChange={this.onInputChange}
+                    id="oexpertise"
+                  />
+                </div>
+                <div className="password">
+                  <input
+                    className="input"
+                    placeholder="portfolio of your prior work ?"
+                    type="text"
+                    value={this.state.portfolio}
+                    onChange={this.onInputChange}
+                    id="portfolio"
+                  />
+                </div>
+                <div className="createAccount">
+                  <button type="submit" className="button is-success" >Save</button>
+                  <a href="/candidatehome">Back to Home</a>
+                </div>
+              </form>
             </div>
-
-            {/* For Email */}
-            <div className="email">
-              <input
-                className="input"
-                placeholder="Enter Email"
-                type="email"
-                value={this.state.candidateemail}
-                onChange={this.onInputChange}
-                id="candidateemail"
-              />
-            </div>
-
-            {/* For area */}
-            <div className="email">
-              <input
-                className="input"
-                placeholder="Area of Expertise"
-                type="text"
-                value={this.state.area}
-                onChange={this.onInputChange}
-                id="area"
-              />
-            </div>
-
-            {/* Expertise */}
-            <div className="password">
-              <input             
-                className="input"
-                placeholder="Any other expertise you would like to list?"
-                type="text"
-                value={this.state.oexpertise}
-                onChange={this.onInputChange}
-                id="oexpertise"
-              />
-            </div>
-
-            <div className="password">
-              <input
-                className="input"
-                placeholder="portfolio of your prior work ?"
-                type="text"
-                value={this.state.portfolio}
-                onChange={this.onInputChange}
-                id="portfolio"
-              />
-            </div>
-
-            <div className="createAccount">
-              <button type="submit" >Save</button>
-              <a href="/candidatehome">Back to Home</a>
-            </div>
-          </form>
-        </div>
-      </div>
+          </div>
+      </section>
     );
   }
 }

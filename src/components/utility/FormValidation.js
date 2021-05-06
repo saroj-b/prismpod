@@ -107,10 +107,10 @@ function validateForm(event, state) {
       document.getElementById("candidateemail").classList.add("is-danger");
       return { blankfield: true };
     }
-    if (state.hasOwnProperty("area") && state.area === "") {
-      document.getElementById("area").classList.add("is-danger");
-      return { blankfield: true };
-    }
+    // if (state.hasOwnProperty("area") && state.area === "") {
+    //   document.getElementById("area").classList.add("is-danger");
+    //   return { blankfield: true };
+    // }
     if (state.hasOwnProperty("oexpertise") && state.oexpertise === "") {
       document.getElementById("oexpertise").classList.add("is-danger");
       return { blankfield: true };

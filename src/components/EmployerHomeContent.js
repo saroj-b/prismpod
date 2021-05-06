@@ -9,7 +9,7 @@ export default function EmployerHomeContent() {
                     <div className="card-content">
                         <div className="content">
                             <h4>Add Requirements</h4>
-                            <a class="button is-primary is-medium" href="/employeeprojectreq">Post New Requirement</a>
+                            <a class="button is-success is-medium" href="/employeeprojectreq">Post New Requirement</a>
                         </div>
                     </div>
                 </div>
@@ -20,7 +20,7 @@ export default function EmployerHomeContent() {
                     <div className="card-content">
                         <div className="content">
                             <h4>Browse Candidate</h4>
-                            <a class="button is-primary is-medium" href="/candidatesearch">Search Now</a>
+                            <a class="button is-success is-medium" href="/candidatesearch">Search Now</a>
                         </div>
                     </div>
                 </div>
