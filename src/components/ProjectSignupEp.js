@@ -4,8 +4,7 @@ import './css/projectsignup.css';
 import Head from './Head';
 import { frontend,backend,mobiletech } from './Multi1';
 
-const sports = 
-[ "React js", "Angular", "Php",];
+const sports = [ "React js", "Angular", "Php",];
 class Form extends Component {
     state = {
         success: false

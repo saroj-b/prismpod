@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-// import "./auto.css";
 import './css/head.css';
-import {Link, Route} from "react-router-dom";
-// import AddAG from "./Common/AddAG";
-import { Switch } from "react-router-dom";
 class Head extends Component{
   render(){
     return(

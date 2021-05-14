@@ -1,13 +1,11 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import FormErrors from "./FormErrors";
 import Validate from "./utility/FormValidation";
-import { Auth } from "aws-amplify";
 import axios from 'axios';
-import { Multiselect } from "multiselect-react-dropdown";
 import './css/register.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Dropdown} from 'react-bootstrap';
 import Select from 'react-select';
+import MultiSelect from "react-multi-select-component";
 
 const remoteEngineerPreference = [
   { value: 'USA', label: 'US-Based' },
@@ -48,7 +46,6 @@ const mobileSkills = [
   { value: 'C#', label: 'C#' }
 ]
 
-
 class Register extends Component {
   
   state = {
@@ -60,7 +57,7 @@ class Register extends Component {
     budgetRange: null,
     errors: {
       blankfield: false
-    }
+    } 
   }
 
   //for select option
@@ -159,7 +156,6 @@ class Register extends Component {
                 </p>
               </div>
 
-
               {/* Multiselect Dropdown Starts Here */}
 
               <div className="field">
@@ -228,48 +224,7 @@ class Register extends Component {
                 </p>
               </div>
 
-              {/* <div className="field">
-                <p className="control">
-                  <input
-                    className="input" 
-                    type="text"
-                    id="frontendTechSkills"
-                    aria-describedby="frontendTechSkillsHelp"
-                    placeholder="Enter any Front-end Skill"
-                    value={this.state.frontendTechSkills}
-                    onChange={this.onInputChange}
-                  />
-                </p>
-              </div>
-
-              <div className="field">
-                <p className="control">
-                  <input 
-                    className="input" 
-                    type="text"
-                    id="backendTechSkills"
-                    aria-describedby="backendTechSkillsHelp"
-                    placeholder="Enter any Back-end Skill"
-                    value={this.state.backendTechSkills}
-                    onChange={this.onInputChange}
-                  />
-                </p>
-              </div>
-
-              <div className="field">
-                <p className="control">
-                  <input 
-                    className="input" 
-                    type="text"
-                    id="mobileTechSkills"
-                    aria-describedby="mobileTechSkillsHelp"
-                    placeholder="Enter any Mobile Skill"
-                    value={this.state.mobileTechSkills}
-                    onChange={this.onInputChange}
-                  />
-                </p>
-              </div>
-
+              {/*
               <div className="field">
                 <p className="control">
                   <input 
@@ -297,7 +252,6 @@ class Register extends Component {
                   </button>
                 </p>
               </div>
-          
             
           </form>
         </div>

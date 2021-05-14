@@ -103,6 +103,14 @@ function validateForm(event, state) {
       document.getElementById("fname").classList.add("is-danger");
       return { blankfield: true };
     }
+    if (state.hasOwnProperty("mname") && state.mname === "") {
+      document.getElementById("mname").classList.add("is-danger");
+      return { blankfield: true };
+    }
+    if (state.hasOwnProperty("lname") && state.lname === "") {
+      document.getElementById("lname").classList.add("is-danger");
+      return { blankfield: true };
+    }
     if (state.hasOwnProperty("candidateemail") && state.candidateemail === "") {
       document.getElementById("candidateemail").classList.add("is-danger");
       return { blankfield: true };
@@ -119,6 +127,20 @@ function validateForm(event, state) {
       document.getElementById("portfolio").classList.add("is-danger");
       return { blankfield: true };
     }
+    if (state.hasOwnProperty("linkedin") && state.linkedin === "") {
+      document.getElementById("linkedin").classList.add("is-danger");
+      return { blankfield: true };
+    }
+     
+    if (state.hasOwnProperty("github") && state.github === "") {
+      document.getElementById("github").classList.add("is-danger");
+      return { blankfield: true };
+    }
+    // if (state.hasOwnProperty("country") && state.country.value === " ") {
+    //   document.getElementById("country").classList.add("is-danger");
+    //   return { blankfield: true };
+    // }
+   
     return;
   }
   

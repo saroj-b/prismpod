@@ -20,6 +20,7 @@ import CandidateHome from './components/CandidateHome';
 import EmployerHome from './components/EmployerHome';
 import CandidateSearch from './components/CandidateSearch';
 import EmployerProjectReq from './components/EmployerProjectReq';
+import Employeepf from './components/Employeepf';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 library.add(faEdit);
@@ -84,6 +85,7 @@ class App extends Component {
               <Route exact path="/employerhome" render={(props) => <EmployerHome {...props} auth={authProps} />} />
               <Route exact path="/candidatesearch" render={(props) => <CandidateSearch {...props} auth={authProps} />} />
               <Route exact path="/employeeprojectreq" render={(props) => <EmployerProjectReq {...props} auth={authProps} />} />
+              <Route exact path="/employeepf" render={(props) => <Employeepf {...props} auth={authProps} />} />
             </Switch>
             
             <Footer/>

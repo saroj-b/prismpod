@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import Footer from './Footer';
+// import Footer from './Footer';
 import EmployerHero from './EmployerHero';
 import EmployerHomeContent from './EmployerHomeContent';
 import './css/addcandidate.css';

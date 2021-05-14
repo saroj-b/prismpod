@@ -1,6 +1,5 @@
 import React ,{Component}from "react";
 import '../components/css/addcandidate.css';
-import Head from "./Head";
 import axios from 'axios';
 // import FormikControl from './formikcontrol';
 import Validate from "./utility/FormValidation";
@@ -9,35 +8,67 @@ import FormErrors from "./FormErrors";
 import Select from 'react-select';
 const area = [
    { 
-     value: 'India', label: 'India'
+     value: 'Node', label: 'Node'
     },
   { 
-    value: 'US', label: 'US'
+    value: 'Java', label: 'Java'
    },
   { 
-    value: 'Canada', label: 'Canada'
+    value: 'React', label: 'React'
    },
   { 
-    value: 'UK', label: 'UK' 
+    value: 'Python', label: 'Python' 
   },
+  { 
+    value: 'AWS', label: 'AWS' 
+  },
+  { 
+    value: 'C++', label: 'C++' 
+  }
 ]
+
+//for country
+const country = [
+  { 
+    value: 'USA', label: 'USA'
+   },
+ { 
+   value: 'Canada', label: 'Canada'
+  },
+ { 
+   value: 'India', label: 'India'
+  }
+]
+
 class AddCandidate extends Component {
   state = {
   fname: "",
+  mname:"",
+  lname:"",
   candidateemail: "",
   area: "",
+  country:"",
   oexpertise: "",
   portfolio: "",
+  linkedin:"",
+  github:"",
   resetForm: "",
     errors: {
       blankfield: false,
       passwordmatch: false
     }
   }
-  handleChange = area=> {
+
+  handleChange = area => {
     this.setState({ area });
     console.log(`Option selected:`, area);
   };
+
+  handleChange = country => {
+    this.setState({ country });
+    console.log(`Option selected:`, country.value);
+  };
+
   clearErrorState = () => {
     this.setState({
       errors: {
@@ -46,6 +77,7 @@ class AddCandidate extends Component {
       }
     });
   }
+
   handleSubmit = async event => {
     event.preventDefault();
     // Form validation
@@ -56,11 +88,12 @@ class AddCandidate extends Component {
         errors: { ...this.state.errors, ...error }
       });
     }
-    const { fname,candidateemail,oexpertise, area, portfolio  } = this.state;
+    const { fname, mname, lname, candidateemail, area, country, linkedin, github, oexpertise, portfolio  } = this.state;
     // Database insert here
-    if (fname && candidateemail && area && oexpertise && portfolio) {
-      axios.post("https://qk46jtsdt7.execute-api.us-east-1.amazonaws.com/dev/add_Candidate_DynamoDB  ",
-       {CandidateFullName:fname,CandidateEmail: candidateemail, CandidateAreaOfExpertise : area,
+    if (fname && mname && lname && candidateemail && country && linkedin && github && oexpertise && portfolio) {
+      axios.post("https://qk46jtsdt7.execute-api.us-east-1.amazonaws.com/dev/add_Candidate_DynamoDB",
+       {CandidateFirstName:fname, CandidateMiddleName : mname, CandidateLastName : lname, CandidateEmail: candidateemail,
+        CandidateAreaOfExpertise : area, CandidateCountry : country, CandidateLinkedIn : linkedin, CandidateGithub : github,
         CandidateOtherExpertise: oexpertise,CandidatePortfolio:portfolio }).then(res => {
           console.log(res);
           console.log(res.data);
@@ -80,20 +113,47 @@ class AddCandidate extends Component {
 render() {
     return (
      <div className="container parent">
+      <h1>Add Your Profile</h1>
         <div className="form-wrapper">
           <FormErrors formerrors={this.state.errors} />
           <form onSubmit={this.handleSubmit}>
-            {/* For Name */}
+
+            {/* For First Name */}
             <div className="email">
               <input
                 className="input" 
-                placeholder="Enter Fullname"
+                placeholder="Enter First Name"
                 type="text"
                 id="fname"
                 value={this.state.fname}
                 onChange={this.onInputChange}
               />
             </div>
+
+            {/* For Middle Name */}
+            <div className="email">
+              <input
+                className="input" 
+                placeholder="Enter Middle Name"
+                type="text"
+                id="mname"
+                value={this.state.mname}
+                onChange={this.onInputChange}
+              />
+            </div>
+
+             {/* For Last Name */}
+             <div className="email">
+              <input
+                className="input" 
+                placeholder="Enter Last Name"
+                type="text"
+                id="lname"
+                value={this.state.lname}
+                onChange={this.onInputChange}
+              />
+            </div>
+
             {/* For Email */}
             <div className="email">
               <input
@@ -105,19 +165,20 @@ render() {
                 id="candidateemail"
               />
             </div>
-            {/* For area */}
+
+            {/* For Primary Expertise */}
             <div className="email">
               <Select
-                  // value={area}
-                  onChange={this.handleChange}
-                  options={area}
-                  className="input1"
-                  id="area"
-                  placeholder="Area"
-                  isMulti="true"
-                  />
+                onChange={this.handleChange}
+                options={area}
+                className="input1"
+                id="area"
+                placeholder="Primary Expertise"
+                isMulti="true"
+                />
             </div>
-            {/* Expertise */}
+
+            {/* Other Expertise */}
             <div className="password">
               <input             
                 className="input"
@@ -128,16 +189,55 @@ render() {
                 id="oexpertise"
               />
             </div>
+
+             {/* For Country */}
+             <div className="email">
+              <Select
+                  //value={area}
+                  onChange={this.handleChange}
+                  options={country}
+                  className="input1"
+                  id="country"
+                  placeholder="What's your country"
+                  />
+            </div>
+
+            {/* Portfolio */}
             <div className="password">
               <input
                 className="input"
-                placeholder="portfolio of your prior work ?"
-                type="text"
+                placeholder="url of your portfolio work"
+                type="url"
                 value={this.state.portfolio}
                 onChange={this.onInputChange}
                 id="portfolio"
               />
             </div>
+
+            {/* LinkedIn */}
+            <div className="password">
+              <input
+                className="input"
+                placeholder="paste your LinkedIn profile url"
+                type="url"
+                value={this.state.linkedin}
+                onChange={this.onInputChange}
+                id="linkedin"
+              />
+            </div>
+
+            {/* GitHub */}
+            <div className="password">
+              <input
+                className="input"
+                placeholder="paste your GitHub url"
+                type="url"
+                value={this.state.github}
+                onChange={this.onInputChange}
+                id="github"
+              />
+            </div>
+
             <div className="createAccount">
               <button type="submit" className="button is-success">Save</button>
               <a href="/candidatehome">Back to Home</a>

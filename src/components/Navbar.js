@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Auth } from 'aws-amplify';
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
 import {Dropdown} from 'react-bootstrap';
 
 
@@ -42,7 +42,7 @@ export default class Navbar extends Component {
 
             {this.props.auth.isAuthenticated && (
               <a href="/employerhome" className="navbar-item">
-                Employer
+                Client
               </a>
             )}
           </div>
