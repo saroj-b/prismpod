@@ -103,7 +103,7 @@ function validateForm(event, state) {
       document.getElementById("fname").classList.add("is-danger");
       return { blankfield: true };
     }
-    if (state.hasOwnProperty("mname") && state.mname === "") {
+    if (state.hasOwnProperty("mname") && state.middlename === "") {
       document.getElementById("mname").classList.add("is-danger");
       return { blankfield: true };
     }

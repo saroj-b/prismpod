@@ -6,6 +6,7 @@ import Validate from "./utility/FormValidation";
 import FormErrors from "./FormErrors";
 // import Select from "react-select/src/Select";
 import Select from 'react-select';
+import Dum from "./Dum";
 const area = [
    { 
      value: 'Node', label: 'Node'
@@ -41,6 +42,22 @@ const country = [
 ]
 
 class AddCandidate extends Component {
+
+ state={
+    profileImg:
+	'/https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
+  }
+  imageHandler = (e) => {
+    const reader = new FileReader();
+    reader.onload = () =>{
+      if(reader.readyState === 2){
+        this.setState({profileImg: reader.result})
+      }
+    }
+    reader.readAsDataURL(e.target.files[0])
+  };
+
+
   state = {
   fname: "",
   mname:"",
@@ -111,8 +128,26 @@ class AddCandidate extends Component {
     document.getElementById(event.target.id).classList.remove("is-danger");
   }
 render() {
+  const { profileImg} = this.state
     return (
-     <div className="container parent">
+     <div className="container">
+  <div className="row">
+    <div className="col-sm">
+      <div className="img-holder1">
+						<img src={profileImg} alt="" id="img" className="img1" />
+					</div>
+          <input type="file" accept="image/*" name="" id="input" onChange={this.imageHandler} />
+           <label className="img2" htmlFor="input">Photo </label>
+					{/* <div className="label1">
+         
+						<i className="material-icons">Upload Photo</i>
+						
+				
+          </div> */}
+      <Dum/>
+    </div>
+    <div className="col-sm">
+      <div className="container parent">
       <h1>Add Your Profile</h1>
         <div className="form-wrapper">
           <FormErrors formerrors={this.state.errors} />
@@ -243,8 +278,13 @@ render() {
               <a href="/candidatehome">Back to Home</a>
             </div>
           </form>
+          {/* <Dum/> */}
         </div>
       </div>
+    </div>
+    
+  </div>
+</div>
     );
   }
 }

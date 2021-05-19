@@ -44,17 +44,25 @@ const mobileSkills = [
   { value: 'Java', label: 'Java' },
   { value: 'Python', label: 'Python' },
   { value: 'C#', label: 'C#' }
+];
+
+const industryOptions = [
+  { value: 'Healthcare', label: 'Healthcare' },
+  { value: 'Banking', label: 'Banking and Financial Services' },
+  { value: 'Retail', label: 'Retail' },
+  { value: 'Travel', label: 'Travel' }
 ]
 
 class Register extends Component {
   
   state = {
     projectObjective: "",
-    frontendTechSkills: null,
-    backendTechSkills: null,
-    mobileTechSkills: null,
-    remoteEngPref: null,
-    budgetRange: null,
+    frontendTechSkills: "",
+    backendTechSkills: "",
+    mobileTechSkills: "",
+    remoteEngPref: "",
+    budgetRange: "",
+    industry: "",
     errors: {
       blankfield: false
     } 
@@ -136,6 +144,7 @@ class Register extends Component {
     const { frontendTechSkills } = this.state;
     const { backendTechSkills } = this.state;
     const { mobileTechSkills } = this.state;
+    const { industry } = this.state;
 
     return (
       <section className="section auth">
@@ -158,6 +167,8 @@ class Register extends Component {
 
               {/* Multiselect Dropdown Starts Here */}
 
+
+              {/* For Front end Skills */}
               <div className="field">
                 <p className="control">
                 <Select
@@ -170,7 +181,7 @@ class Register extends Component {
                   />
                 </p>
               </div>
-
+              {/* For Back end Skills */}
               <div className="field">
                 <p className="control">
                 <Select
@@ -183,8 +194,7 @@ class Register extends Component {
                   />
                 </p>
               </div>
-
-              
+              {/* For Mobile tech end Skills */}
               <div className="field">
                 <p className="control">
                 <Select
@@ -200,6 +210,7 @@ class Register extends Component {
 
               {/* Select option starts here */}
 
+              {/* For Remote Eng Pref */}
               <div className="field">
                 <p className="control">
                 <Select
@@ -212,6 +223,7 @@ class Register extends Component {
                 </p>
               </div>
 
+              {/* For Budget Range */}
               <div className="field">
                 <p className="control">
                 <Select
@@ -224,20 +236,18 @@ class Register extends Component {
                 </p>
               </div>
 
-              {/*
+              {/* For Industry */}
               <div className="field">
                 <p className="control">
-                  <input 
-                    className="input" 
-                    type="text"
-                    id="remoteEngineerModelPreference"
-                    aria-describedby="remoteEngineerModelPreferenceHelp"
-                    placeholder="Remote Eng. Prefference"
-                    value={this.state.remoteEngineerModelPreference}
-                    onChange={this.onInputChange}
+                <Select
+                  value={industry}
+                  onChange={this.handleChange}
+                  options={industryOptions}
+                  id="industry"
+                  placeholder="Industry"
                   />
                 </p>
-              </div> */}
+              </div>
 
               <div className="field">
                 <p className="control">
