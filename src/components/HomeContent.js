@@ -8,8 +8,8 @@ export default function HomeContent() {
                 <div className="card is-shady">
                     <div className="card-content">
                         <div className="content">
-                            <h4>Developers</h4>
-                            <p>This section is coming soon</p>
+                            <h4>Candidates</h4>
+                            <a href='/candidatehome'>Explore Candidate</a>
                         </div>
                     </div>
                 </div>
@@ -19,8 +19,8 @@ export default function HomeContent() {
                 <div className="card is-shady">
                     <div className="card-content">
                         <div className="content">
-                            <h4>Projects</h4>
-                            <p>This section is coming soon</p>
+                            <h4>Clients</h4>
+                            <a href='/employerhome'>Explore Client</a>
                         </div>
                     </div>
                 </div>

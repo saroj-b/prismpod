@@ -20,7 +20,7 @@ export default function CandidateHomeContent() {
                     <div className="card-content">
                         <div className="content">
                             <h4>Projects</h4>
-                            <a class="button is-success is-medium" href="#">Search Projects</a>
+                            <a class="button is-success is-medium" href="/searchprojects">Search Projects</a>
                         </div>
                     </div>
                 </div>

@@ -1,8 +1,8 @@
-import React ,{Component}from "react";
+import React from "react";
 import Select from 'react-select';
 
 
-const candidateSkills = [
+const projectSkills = [
   { value: 'Node', label: 'Node'},
   { value: 'Java', label: 'Java'},
   { value: 'React', label: 'React'},
@@ -14,26 +14,20 @@ const candidateSkills = [
   { value: 'DotNet', label: 'Dot Net'}
 ]
 
-
-class SearchPage extends React.Component {
-  componentDidMount() {
-    const apiUrl = 'https://xvc2hr1788.execute-api.us-east-1.amazonaws.com/dev/Get_Candidate';
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => console.log('Data from API', data));
-  }
+class SearchProjects extends React.Component {
+  
   render() {
 
     return(
       <div className="container">
-        <h1>Candidate Search</h1>
+        <h1>Project Search</h1>
         <div className="field">
           {/* <label>Choose any Skill</label> */}
           <Select
                 onChange={this.handleChange}
-                options={candidateSkills}
+                options={projectSkills}
                 className="input1"
-                id="area"
+                id="searchproject"
                 placeholder="Choose any Skill"
                 />
         </div>
@@ -41,17 +35,16 @@ class SearchPage extends React.Component {
         <div className="field">
           <p className="control">
             <button className="button is-success">
-              Search Candidate
+              Browse Projects
             </button>
           </p>
-          <a href="/employerhome">Back to client home</a>
+          <a href="/candidatehome">back to candidate home</a>
         </div>
         
       </div>
-      
     )
 
   }
 }
 
-export default SearchPage;
+export default SearchProjects;

@@ -19,7 +19,7 @@ export default function EmployerHomeContent() {
                 <div className="card is-shady">
                     <div className="card-content">
                         <div className="content">
-                            <h4>Browse Candidate</h4>
+                            <h4>Browse Candidates</h4>
                             <a class="button is-success is-medium" href="/candidatesearch">Search Now</a>
                         </div>
                     </div>

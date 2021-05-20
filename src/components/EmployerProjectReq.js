@@ -147,7 +147,7 @@ class Register extends Component {
     const { industry } = this.state;
 
     return (
-      <section className="section auth">
+      <section className="section">
         <div className="container parent">
           <h1>Add a Requirement</h1>
           <FormErrors formerrors={this.state.errors} />
