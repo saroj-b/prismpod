@@ -31,7 +31,7 @@ export default function EmployerHomeContent() {
                     <div className="card-content">
                         <div className="content">
                             <h4>Profile</h4>
-                            <a class="button is-success is-medium" href="/employeepf">Profile</a>
+                            <a class="button is-success is-medium" href="/employeepf">Manage Profile</a>
                         </div>
                     </div>
                 </div>

@@ -85,7 +85,13 @@
   border: 1px solid #cfcfcf;
 }
 
-
+.input2{
+   padding: 10px 10px;
+  border-radius: 5px;
+  outline: none;
+  width: 100%;
+  border: 1px solid white;
+}
 
 input.error {
   border: 1px solid red;

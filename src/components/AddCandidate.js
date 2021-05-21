@@ -146,7 +146,7 @@ render() {
         <div className="form-wrappe">
       <div className="row">
 
-          <div className="col-sm-6">
+          <div className="col-lg-6">
             
           
           <FormErrors formerrors={this.state.errors} />
@@ -205,7 +205,7 @@ render() {
               <Select
                 onChange={this.handleChange}
                 options={area}
-                className="input1"
+                className="input2"
                 id="area"
                 placeholder="Primary Expertise"
                 isMulti="true"
@@ -230,7 +230,7 @@ render() {
                   //value={area}
                   onChange={this.handleChange}
                   options={country}
-                  className="input1"
+                  className="input2"
                   id="country"
                   placeholder="What's your country"
                   />
@@ -276,7 +276,7 @@ render() {
                   //value={area}
                   onChange={this.handleChange}
                   options={industry}
-                  className="input1"
+                  className="input2"
                   id="industry"
                   placeholder="Industry"
                   />
