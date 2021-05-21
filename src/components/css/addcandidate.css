@@ -8,7 +8,11 @@
   align-items: center;
   /* background-color: #258ea6; */
 }
-
+.new {
+  column-count: 2;
+  column-gap: 30px;
+  width: 100%;
+}
 .form-wrapper {
   width: 400px;
   display: flex;
@@ -29,8 +33,43 @@
   display: flex;
   flex-wrap: wrap;
 }
+/* //candidatet img wala part  */
+.imgadd{
+  background-color: #5c6bf1;
+  color: #fff;
+  border: 2px solid #fff;
+  width: 60%;
+  margin-top: 1em;
+  padding: 8px 0px;
+  font-size: 1em;
+  font-weight: lighter;
+  letter-spacing: 1px;
+  margin-bottom: 0.25em;
+  position:absolute;
+  top:27%;
+  left:30%;
+   text-align: center;
+  cursor: pointer;
+  
+}
+.imghold{
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+   position:absolute;
+  top:2%;
+  left:1%;
+}
+.img-holder2{
+ width: 100px;
+  height: 100px;
+  position:absolute;
+  top:8%;
 
-
+  overflow: hidden;
+  border-radius:49%;
+  left:37%;
+}
 
 .l1{
   font-size: 0.8em;

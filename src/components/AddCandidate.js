@@ -6,8 +6,6 @@ import Validate from "./utility/FormValidation";
 import FormErrors from "./FormErrors";
 // import Select from "react-select/src/Select";
 import Select from 'react-select';
-import Dum from "./Dum";
-
 const area = [
    { 
      value: 'Node', label: 'Node'
@@ -41,10 +39,23 @@ const country = [
    value: 'India', label: 'India'
   }
 ]
+//new
+const industry = [
+  { 
+    value: ' Healthcare', label: ' Healthcare'
+   },
+ { 
+   value: ' Banking and Financia', label: ' Banking and Financia'
+  },
+ { 
+   value: 'Services', label: 'Services'
+  }
+]
 
 class AddCandidate extends Component {
 
- state={
+
+  state={
     profileImg:
 	'/https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
   }
@@ -57,8 +68,6 @@ class AddCandidate extends Component {
     }
     reader.readAsDataURL(e.target.files[0])
   };
-
-
   state = {
   fname: "",
   mname:"",
@@ -131,26 +140,15 @@ class AddCandidate extends Component {
 render() {
   const { profileImg} = this.state
     return (
-     <div className="container">
-  <div className="row">
-    <div className="col-sm">
-      <div className="img-holder1">
-						<img src={profileImg} alt="" id="img" className="img1" />
-					</div>
-          <input type="file" accept="image/*" name="" id="input" onChange={this.imageHandler} />
-           <label className="img2" htmlFor="input">Photo </label>
-					{/* <div className="label1">
-         
-						<i className="material-icons">Upload Photo</i>
-						
-				
-          </div> */}
-      <Dum/>
-    </div>
-    <div className="col-sm">
-      <div className="container parent">
-      <h1>Add Your Profile</h1>
-        <div className="form-wrapper">
+     <div className="container parent ">
+      {/* <h1>Add Your Profile</h1> */}
+      
+        <div className="form-wrappe">
+      <div className="row">
+
+          <div className="col-sm-6">
+            
+          
           <FormErrors formerrors={this.state.errors} />
           <form onSubmit={this.handleSubmit}>
 
@@ -273,19 +271,40 @@ render() {
                 id="github"
               />
             </div>
+             <div className="email">
+              <Select
+                  //value={area}
+                  onChange={this.handleChange}
+                  options={industry}
+                  className="input1"
+                  id="industry"
+                  placeholder="Industry"
+                  />
+            </div>
 
             <div className="createAccount">
               <button type="submit" className="button is-success">Save</button>
               <a href="/candidatehome">Back to Home</a>
             </div>
           </form>
-          {/* <Dum/> */}
+          </div>
+           <div className="col-sm-6">
+
+
+             <div className="container1">
+					<div className="img-holder2">
+						<img src={profileImg} alt="" id="img" className="imghold" />
+					</div>
+					<input type="file" accept="image/*" name="" id="input" onChange={this.imageHandler} />
+           <label className="imgadd" htmlFor="input">Photo </label>
+				</div>
+           </div>
+        </div>
+        
+            
         </div>
       </div>
-    </div>
-    
-  </div>
-</div>
+
     );
   }
 }

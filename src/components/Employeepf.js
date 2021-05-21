@@ -4,6 +4,7 @@ import Multi from "./Multi";
 import Dum from "./Dum";
 
 export class Employeepf extends Component {
+  
   state={
     profileImg:
 	'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
@@ -57,8 +58,7 @@ export class Employeepf extends Component {
               <a href="/employerhome">Back to Home</a>
             </div>
     </div>
-    <div class="col-sm-4"> <Dum
-    className="resume"/></div>
+    <div class="col-sm-4"></div>
 		
       </div>
             
