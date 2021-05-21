@@ -148,7 +148,7 @@ class Register extends Component {
 
     return (
       <section className="section">
-        <div className="container parent">
+        <div className="container centeritem">
           <h1>Add a Requirement</h1>
           <FormErrors formerrors={this.state.errors} />
           <form onSubmit={this.handleSubmit}>

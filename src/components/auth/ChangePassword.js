@@ -56,7 +56,6 @@ class ChangePassword extends Component {
         errors: { ...this.state.errors, cognito: err }
       });
       console.log(err);
-      window.alert(err);
     }
   }
 
