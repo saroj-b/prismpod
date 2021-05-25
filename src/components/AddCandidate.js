@@ -271,6 +271,7 @@ render() {
                 id="github"
               />
             </div>
+            
              <div className="email">
               <Select
                   //value={area}
@@ -301,7 +302,6 @@ render() {
            </div>
         </div>
         
-            
         </div>
       </div>
 

@@ -36,7 +36,6 @@ export default function EmployerHomeContent() {
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
   )
